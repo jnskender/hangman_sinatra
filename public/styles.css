@@ -1,0 +1,34 @@
+body{
+  font-family: arial;
+}
+
+.container{
+  display: grid;
+  height: 100vh;
+  grid-gap: 5px;
+  grid-template-areas:
+    "header-l header header-r"
+    "aside-l content aside-r"
+    "footer footer footer";
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 6fr 2fr;
+}
+
+header {
+  text-align: center;
+  grid-area: header;
+}
+
+#content {
+  grid-area: content;
+  text-align: center;
+}
+
+#output{
+  display: inline;
+  vertical-align: top;
+}
+
+#encoder {
+ align-items: center;
+}
