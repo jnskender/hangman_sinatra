@@ -16,6 +16,10 @@ form{
   grid-template-rows: 1fr 6fr 2fr;
 }
 
+h1 {
+  font-size: 100px;
+}
+
 header {
   text-align: center;
   grid-area: header;

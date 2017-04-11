@@ -23,7 +23,7 @@
                   <h1><%=session[:correct_guesses].join(" ")%></h1>
                   <form>
                     <input type="text" autofocus maxlength="1" name="guess" placeholder="Enter Guess" pattern="[A-Za-z]{1}" />
-                    <input type="submit" value="Guess!" />
+                    <input type="submit" value=<%="#{session[:turns]} Guesses!" %> />
                   </form>
                   <p>
                     Already Guessed: <%=session[:incorrect_guesses].join(",").upcase%>
