@@ -1,22 +1,33 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require './hangman.rb'
 
-helpers do
+enable :sessions
 
-  def get_word
-    words = File.readlines('dictionary.txt')
-    game_words = []
+hangman = Hangman.new
 
-    words.each do |word|
-        word.gsub!(/\s+/, '')
-        game_words << word if word.length.between?(5, 12) && word[0] != word[0].upcase
-    end
-    game_words[rand(0...game_words.size)]
-  end
+#set :word , hangman.secret_word
 
-end
 
 get '/' do
-    @word = get_word
+    guess = params[:guess]
+    hangman = Hangman.new unless !guess.nil?
+    #redirect to("/new_game") if hangman.check_loser
+    redirect to("/game_over") if hangman.check_loser
+    hangman.make_guess(guess) unless guess.nil?
+    @winner = hangman.check_winner
+    session[:word] = hangman.secret_word
+    session[:correct_guesses] = hangman.correct_guesses
+    session[:turns] = hangman.turns
+    session[:incorrect_guesses] = hangman.incorrect_guesses
     erb :home
+end
+
+get '/new_game' do
+  session.clear
+  redirect to("/")
+end
+
+get '/game_over' do
+  erb :gameover
 end

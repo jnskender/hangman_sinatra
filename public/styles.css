@@ -1,7 +1,9 @@
 body{
-  font-family: arial;
+   font-family: 'Indie Flower', cursive;
 }
-
+form{
+  font-family: Arial;
+}
 .container{
   display: grid;
   height: 100vh;
@@ -17,6 +19,11 @@ body{
 header {
   text-align: center;
   grid-area: header;
+}
+
+img{
+  height: 30%;
+  width: 30%;
 }
 
 #content {

@@ -18,16 +18,8 @@
             </header>
             <section id="content">
                 <center>
-                  <% image_source = @winner ? "./images/200w.gif" : "./images/hang#{session[:turns]}.jpg"  %>
-                  <img src= <%= image_source  %> alt="Guess 7" />
-                  <h1><%=session[:correct_guesses].join(" ")%></h1>
-                  <form>
-                    <input type="text" autofocus maxlength="1" name="guess" placeholder="Enter Guess" pattern="[A-Za-z]{1}" />
-                    <input type="submit" value="Guess!" />
-                  </form>
-                  <p>
-                    Already Guessed: <%=session[:incorrect_guesses].join(",").upcase%>
-                  </p>
+                  <h1>Game Over!</h1>
+                  <h1><%="Word was: #{session[:word]}"%></h1>
                   <form method="GET" target='/new_game' >
                     <input type="submit" value="New Game" />
                   </form>
